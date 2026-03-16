@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hibe Atölyesi — Hibe ve Destek Başvuru Rehberleri, Şablonlar ve Araçlar</title>
   <meta name="description" content="KOSGEB, AB hibeleri, Interreg ve IPA programları için başvuru rehberleri, şablonlar ve ücretsiz hibe arama aracı. Hibe Atölyesi ile fonlara erişin.">
-  <meta name="keywords" content="KOSGEB başvuru, AB hibe, Interreg, IPA, hibe rehberi, hibe şablonu, fon başvurusu, STK hibe">
+  <meta name="keywords" content="KOSGEB başvuru, AB hibe, Interreg, IPA, hibe rehberi, hibe şablonu, fon başvurusu, STK hibe, KOSGEB destek kiti">
   <meta property="og:title" content="Hibe Atölyesi — Fonlara Erişimin Kısa Yolu">
   <meta property="og:description" content="KOSGEB, AB hibeleri, Interreg ve IPA programları için başvuru rehberleri, şablonlar ve ücretsiz hibe arama aracı.">
   <meta property="og:type" content="website">
@@ -14,359 +14,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --fg: #1a1a1a;
-      --fg-muted: #5a5a5a;
-      --fg-light: #8a8a8a;
-      --bg: #fafaf8;
-      --bg-card: #ffffff;
-      --bg-alt: #f2f1ed;
-      --accent: #2c5f2d;
-      --accent-light: #e8f0e8;
-      --accent-hover: #1e4620;
-      --border: #e5e4e0;
-      --border-light: #eeede9;
-      --serif: 'DM Serif Display', Georgia, serif;
-      --sans: 'DM Sans', system-ui, -apple-system, sans-serif;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-
-    body {
-      font-family: var(--sans);
-      color: var(--fg);
-      background: var(--bg);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    ::selection { background: var(--accent-light); color: var(--accent); }
-
-    /* ---- NAV ---- */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(250,250,248,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-light);
-      transition: box-shadow 0.3s;
-    }
-    nav.scrolled { box-shadow: 0 1px 12px rgba(0,0,0,0.06); }
-    .nav-inner {
-      max-width: 1080px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0.9rem 1.5rem;
-    }
-    .nav-logo {
-      font-family: var(--serif); font-size: 1.25rem; color: var(--fg);
-      text-decoration: none; letter-spacing: -0.01em;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      color: var(--fg-muted); text-decoration: none; font-size: 0.875rem;
-      font-weight: 500; transition: color 0.2s; letter-spacing: 0.01em;
-    }
-    .nav-links a:hover { color: var(--accent); }
-
-    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger svg { width: 24px; height: 24px; color: var(--fg); }
-
-    /* ---- HERO ---- */
-    .hero {
-      padding: 10rem 1.5rem 5rem;
-      max-width: 800px; margin: 0 auto;
-      text-align: center;
-    }
-    .hero-badge {
-      display: inline-block;
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--accent); background: var(--accent-light);
-      padding: 0.35rem 1rem; border-radius: 100px;
-      margin-bottom: 2rem;
-    }
-    .hero h1 {
-      font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.5rem);
-      line-height: 1.15; color: var(--fg); margin-bottom: 1.5rem;
-      letter-spacing: -0.02em;
-    }
-    .hero p {
-      font-size: 1.125rem; color: var(--fg-muted); max-width: 580px;
-      margin: 0 auto 2.5rem; line-height: 1.8;
-    }
-    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.85rem 1.75rem; border-radius: 8px;
-      font-family: var(--sans); font-size: 0.9375rem; font-weight: 600;
-      text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
-    }
-    .btn-primary {
-      background: var(--accent); color: #fff;
-    }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
-    .btn-secondary {
-      background: transparent; color: var(--fg); border: 1.5px solid var(--border);
-    }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-    .btn svg { width: 18px; height: 18px; }
-
-    /* ---- SECTIONS ---- */
-    section { padding: 5rem 1.5rem; }
-    .section-inner { max-width: 1080px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.75rem;
-    }
-    .section-title {
-      font-family: var(--serif); font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.01em;
-    }
-    .section-desc {
-      font-size: 1.05rem; color: var(--fg-muted); max-width: 600px;
-      line-height: 1.8; margin-bottom: 3rem;
-    }
-
-    /* ---- PRODUCTS GRID ---- */
-    .products-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-    }
-    .product-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: 12px;
-      padding: 2rem;
-      transition: all 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-    .product-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 24px rgba(44,95,45,0.08);
-      transform: translateY(-2px);
-    }
-    .product-icon {
-      width: 48px; height: 48px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.25rem; font-size: 1.5rem;
-    }
-    .product-icon.green { background: #e8f5e9; }
-    .product-icon.blue { background: #e3f2fd; }
-    .product-icon.orange { background: #fff3e0; }
-    .product-icon.purple { background: #f3e5f5; }
-    .product-card h3 {
-      font-family: var(--serif); font-size: 1.25rem;
-      margin-bottom: 0.6rem; letter-spacing: -0.01em;
-    }
-    .product-card p {
-      font-size: 0.9rem; color: var(--fg-muted); line-height: 1.7;
-      margin-bottom: 1.25rem;
-    }
-    .product-tag {
-      display: inline-block; font-size: 0.75rem; font-weight: 600;
-      padding: 0.25rem 0.75rem; border-radius: 100px;
-    }
-    .tag-soon { background: #fff8e1; color: #f57f17; }
-    .tag-free { background: var(--accent-light); color: var(--accent); }
-    .tag-new { background: #e3f2fd; color: #1565c0; }
-
-    /* ---- HIBE ROBOTU ---- */
-    #robot { background: var(--bg-alt); }
-    .robot-container {
-      max-width: 720px; margin: 0 auto; text-align: center;
-    }
-    .robot-search-box {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-top: 2rem;
-      transition: border-color 0.2s;
-    }
-    .robot-search-box:focus-within { border-color: var(--accent); }
-    .search-row {
-      display: flex; gap: 0.75rem; margin-bottom: 1rem;
-    }
-    .search-row select, .search-row input {
-      flex: 1; padding: 0.8rem 1rem;
-      border: 1.5px solid var(--border); border-radius: 8px;
-      font-family: var(--sans); font-size: 0.9rem;
-      background: var(--bg); color: var(--fg);
-      transition: border-color 0.2s;
-      appearance: auto;
-    }
-    .search-row select:focus, .search-row input:focus {
-      outline: none; border-color: var(--accent);
-    }
-    .search-btn {
-      width: 100%; padding: 0.85rem;
-      background: var(--accent); color: #fff;
-      border: none; border-radius: 8px;
-      font-family: var(--sans); font-size: 0.9375rem; font-weight: 600;
-      cursor: pointer; transition: background 0.2s;
-    }
-    .search-btn:hover { background: var(--accent-hover); }
-    .search-results {
-      margin-top: 1.5rem; text-align: left;
-    }
-    .result-item {
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .result-item:last-child { border-bottom: none; }
-    .result-item h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
-    .result-item p { font-size: 0.825rem; color: var(--fg-muted); margin: 0; }
-    .result-meta {
-      display: flex; gap: 1rem; margin-top: 0.4rem;
-      font-size: 0.75rem; color: var(--fg-light);
-    }
-    .result-meta span { display: flex; align-items: center; gap: 0.25rem; }
-    .no-results {
-      padding: 2rem; color: var(--fg-muted); font-size: 0.9rem;
-    }
-
-    /* ---- HAKKIMIZDA ---- */
-    .about-content {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
-      align-items: start;
-    }
-    .about-text p {
-      font-size: 1rem; color: var(--fg-muted); line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-    .about-stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
-    }
-    .stat-card {
-      background: var(--bg-card); border: 1px solid var(--border-light);
-      border-radius: 10px; padding: 1.5rem; text-align: center;
-    }
-    .stat-card .num {
-      font-family: var(--serif); font-size: 2rem;
-      color: var(--accent); line-height: 1;
-    }
-    .stat-card .label {
-      font-size: 0.8rem; color: var(--fg-muted);
-      margin-top: 0.35rem;
-    }
-
-    /* ---- NEWSLETTER / CTA ---- */
-    .cta-section {
-      background: var(--fg); color: #fff;
-      border-radius: 16px; padding: 3.5rem;
-      text-align: center; margin: 0 auto;
-      max-width: 1080px;
-    }
-    .cta-section h2 {
-      font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2rem);
-      margin-bottom: 0.75rem;
-    }
-    .cta-section p {
-      color: rgba(255,255,255,0.7); margin-bottom: 2rem;
-      font-size: 1rem;
-    }
-    .cta-form {
-      display: flex; gap: 0.75rem; max-width: 460px; margin: 0 auto;
-    }
-    .cta-form input {
-      flex: 1; padding: 0.85rem 1.25rem;
-      border: 1.5px solid rgba(255,255,255,0.2); border-radius: 8px;
-      background: rgba(255,255,255,0.08); color: #fff;
-      font-family: var(--sans); font-size: 0.9rem;
-    }
-    .cta-form input::placeholder { color: rgba(255,255,255,0.4); }
-    .cta-form input:focus { outline: none; border-color: rgba(255,255,255,0.5); }
-    .cta-form button {
-      padding: 0.85rem 1.5rem;
-      background: var(--accent); color: #fff;
-      border: none; border-radius: 8px;
-      font-family: var(--sans); font-size: 0.9rem; font-weight: 600;
-      cursor: pointer; white-space: nowrap;
-      transition: background 0.2s;
-    }
-    .cta-form button:hover { background: var(--accent-hover); }
-
-    /* ---- FOOTER ---- */
-    footer {
-      padding: 3rem 1.5rem;
-      border-top: 1px solid var(--border-light);
-      text-align: center;
-    }
-    footer p { font-size: 0.825rem; color: var(--fg-light); }
-    footer a { color: var(--fg-muted); text-decoration: none; }
-    footer a:hover { color: var(--accent); }
-
-    /* ---- ANIMATIONS ---- */
-    .fade-up {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-
-    /* ---- RESPONSIVE ---- */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .nav-links.open {
-        display: flex; flex-direction: column;
-        position: absolute; top: 100%; left: 0; right: 0;
-        background: rgba(250,250,248,0.98);
-        backdrop-filter: blur(12px);
-        padding: 1.5rem; gap: 1.25rem;
-        border-bottom: 1px solid var(--border-light);
-      }
-      .hamburger { display: block; }
-      .hero { padding: 8rem 1.5rem 3rem; }
-      .products-grid { grid-template-columns: 1fr; }
-      .about-content { grid-template-columns: 1fr; }
-      .search-row { flex-direction: column; }
-      .cta-section { padding: 2.5rem 1.5rem; border-radius: 0; }
-      .cta-form { flex-direction: column; }
-      section { padding: 3.5rem 1.5rem; }
-    }
+    :root{--fg:#1a1a1a;--fg-muted:#5a5a5a;--fg-light:#8a8a8a;--bg:#fafaf8;--bg-card:#fff;--bg-alt:#f2f1ed;--accent:#2c5f2d;--accent-light:#e8f0e8;--accent-hover:#1e4620;--border:#e5e4e0;--border-light:#eeede9;--serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',system-ui,-apple-system,sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}::selection{background:var(--accent-light);color:var(--accent)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);transition:box-shadow .3s}nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}.nav-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.5rem}.nav-logo{font-family:var(--serif);font-size:1.25rem;color:var(--fg);text-decoration:none;letter-spacing:-.01em}.nav-logo span{color:var(--accent)}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--fg-muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s;letter-spacing:.01em}.nav-links a:hover{color:var(--accent)}.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}.hamburger svg{width:24px;height:24px;color:var(--fg)}
+    .hero{padding:10rem 1.5rem 5rem;max-width:800px;margin:0 auto;text-align:center}.hero-badge{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:.35rem 1rem;border-radius:100px;margin-bottom:2rem}.hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.15;color:var(--fg);margin-bottom:1.5rem;letter-spacing:-.02em}.hero p{font-size:1.125rem;color:var(--fg-muted);max-width:580px;margin:0 auto 2.5rem;line-height:1.8}.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.75rem;border-radius:8px;font-family:var(--sans);font-size:.9375rem;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none}.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}.btn-secondary{background:transparent;color:var(--fg);border:1.5px solid var(--border)}.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}.btn svg{width:18px;height:18px}
+    section{padding:5rem 1.5rem}.section-inner{max-width:1080px;margin:0 auto}.section-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.75rem}.section-title{font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.2;margin-bottom:1rem;letter-spacing:-.01em}.section-desc{font-size:1.05rem;color:var(--fg-muted);max-width:600px;line-height:1.8;margin-bottom:3rem}
+    .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}.product-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:12px;padding:2rem;transition:all .25s;position:relative;overflow:hidden}.product-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(44,95,45,.08);transform:translateY(-2px)}.product-card.featured{border-color:var(--accent);box-shadow:0 2px 16px rgba(44,95,45,.10)}.product-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.5rem}.product-icon.green{background:#e8f5e9}.product-icon.blue{background:#e3f2fd}.product-icon.orange{background:#fff3e0}.product-icon.purple{background:#f3e5f5}.product-card h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:.6rem;letter-spacing:-.01em}.product-card p{font-size:.9rem;color:var(--fg-muted);line-height:1.7;margin-bottom:1.25rem}.product-tag{display:inline-block;font-size:.75rem;font-weight:600;padding:.25rem .75rem;border-radius:100px}.tag-soon{background:#fff8e1;color:#f57f17}.tag-free{background:var(--accent-light);color:var(--accent)}.tag-new{background:#e3f2fd;color:#1565c0}
+    .product-ribbon{position:absolute;top:12px;right:-32px;background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.05em;padding:.3rem 2.5rem;transform:rotate(45deg);text-transform:uppercase}.product-features{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}.product-features span{font-size:.75rem;color:var(--fg-muted);background:var(--bg-alt);padding:.2rem .6rem;border-radius:4px}.product-price{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1rem}.price-current{font-family:var(--serif);font-size:1.75rem;color:var(--accent);font-weight:700}.price-old{font-size:1rem;color:var(--fg-light);text-decoration:line-through}.price-label{font-size:.75rem;color:var(--accent);background:var(--accent-light);padding:.15rem .5rem;border-radius:4px;font-weight:600}
+    .btn-buy{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:8px;background:var(--accent);color:#fff;font-family:var(--sans);font-size:.9rem;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer}.btn-buy:hover{background:var(--accent-hover);transform:translateY(-1px)}.btn-buy svg{width:16px;height:16px}.product-note{font-size:.75rem;color:var(--fg-light);margin-top:.6rem}
+    #robot{background:var(--bg-alt)}.robot-container{max-width:720px;margin:0 auto;text-align:center}.robot-search-box{background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;padding:2rem;margin-top:2rem;transition:border-color .2s}.robot-search-box:focus-within{border-color:var(--accent)}.search-row{display:flex;gap:.75rem;margin-bottom:1rem}.search-row select,.search-row input{flex:1;padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:.9rem;background:var(--bg);color:var(--fg);transition:border-color .2s;appearance:auto}.search-row select:focus,.search-row input:focus{outline:none;border-color:var(--accent)}.search-btn{width:100%;padding:.85rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:.9375rem;font-weight:600;cursor:pointer;transition:background .2s}.search-btn:hover{background:var(--accent-hover)}.search-results{margin-top:1.5rem;text-align:left}.result-item{padding:1rem 0;border-bottom:1px solid var(--border-light)}.result-item:last-child{border-bottom:none}.result-item h4{font-size:.95rem;margin-bottom:.25rem}.result-item p{font-size:.825rem;color:var(--fg-muted);margin:0}.result-meta{display:flex;gap:1rem;margin-top:.4rem;font-size:.75rem;color:var(--fg-light)}.result-meta span{display:flex;align-items:center;gap:.25rem}.no-results{padding:2rem;color:var(--fg-muted);font-size:.9rem}
+    .about-content{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}.about-text p{font-size:1rem;color:var(--fg-muted);line-height:1.8;margin-bottom:1rem}.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}.stat-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:10px;padding:1.5rem;text-align:center}.stat-card .num{font-family:var(--serif);font-size:2rem;color:var(--accent);line-height:1}.stat-card .label{font-size:.8rem;color:var(--fg-muted);margin-top:.35rem}
+    .cta-section{background:var(--fg);color:#fff;border-radius:16px;padding:3.5rem;text-align:center;margin:0 auto;max-width:1080px}.cta-section h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.75rem}.cta-section p{color:rgba(255,255,255,.7);margin-bottom:2rem;font-size:1rem}.cta-form{display:flex;gap:.75rem;max-width:460px;margin:0 auto}.cta-form input{flex:1;padding:.85rem 1.25rem;border:1.5px solid rgba(255,255,255,.2);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-family:var(--sans);font-size:.9rem}.cta-form input::placeholder{color:rgba(255,255,255,.4)}.cta-form input:focus{outline:none;border-color:rgba(255,255,255,.5)}.cta-form button{padding:.85rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:.9rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s}.cta-form button:hover{background:var(--accent-hover)}
+    footer{padding:3rem 1.5rem;border-top:1px solid var(--border-light);text-align:center}footer p{font-size:.825rem;color:var(--fg-light)}footer a{color:var(--fg-muted);text-decoration:none}footer a:hover{color:var(--accent)}
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+    @media(max-width:768px){.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(250,250,248,.98);backdrop-filter:blur(12px);padding:1.5rem;gap:1.25rem;border-bottom:1px solid var(--border-light)}.hamburger{display:block}.hero{padding:8rem 1.5rem 3rem}.products-grid{grid-template-columns:1fr}.about-content{grid-template-columns:1fr}.search-row{flex-direction:column}.cta-section{padding:2.5rem 1.5rem;border-radius:0}.cta-form{flex-direction:column}section{padding:3.5rem 1.5rem}}
   </style>
 </head>
 <body>
+  <nav id="navbar"><div class="nav-inner"><a href="#" class="nav-logo">hibe<span>atölyesi</span></a><ul class="nav-links" id="navLinks"><li><a href="#urunler">Ürünler</a></li><li><a href="#robot">Hibe Arama</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#iletisim">İletişim</a></li></ul><button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menü"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div></nav>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">hibe<span>atölyesi</span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#urunler">Ürünler</a></li>
-        <li><a href="#robot">Hibe Arama</a></li>
-        <li><a href="#hakkimizda">Hakkımızda</a></li>
-        <li><a href="#iletisim">İletişim</a></li>
-      </ul>
-      <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menü">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- HERO -->
   <header class="hero">
     <div class="hero-badge fade-up">Rehberler · Şablonlar · Araçlar</div>
     <h1 class="fade-up delay-1">Hibe ve destek başvurularında işinizi kolaylaştırıyoruz</h1>
     <p class="fade-up delay-2">KOSGEB destekleri, AB hibeleri, Interreg ve IPA programları için hazır başvuru rehberleri, profesyonel şablonlar ve ücretsiz hibe arama aracı.</p>
     <div class="hero-cta fade-up delay-3">
-      <a href="#urunler" class="btn btn-primary">
-        Ürünleri İncele
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
-      </a>
-      <a href="#robot" class="btn btn-secondary">
-        Ücretsiz Hibe Ara
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-      </a>
+      <a href="#urunler" class="btn btn-primary">Ürünleri İncele <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+      <a href="#robot" class="btn btn-secondary">Ücretsiz Hibe Ara <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></a>
     </div>
   </header>
 
-  <!-- PRODUCTS -->
   <section id="urunler">
     <div class="section-inner">
       <div class="section-label fade-up">Ürünler</div>
@@ -374,302 +51,275 @@
       <p class="section-desc fade-up">Her bir ürün, yılların saha deneyimiyle hazırlanmış pratik araçlardır. İndirin, doldurun, başvurun.</p>
       <div class="products-grid">
 
-        <div class="product-card fade-up">
+        <!-- ★ KOSGEB KIT — SATIŞ KARTI ★ -->
+        <div class="product-card featured fade-up">
+          <div class="product-ribbon">Yeni</div>
           <div class="product-icon green">📋</div>
-          <h3>KOSGEB Destek Başvuru Kiti</h3>
-          <p>KOSGEB destek programlarına başvuru rehberi, iş planı şablonu, bütçe hazırlama tablosu ve başvuru kontrol listesi. KOBİ'ler için adım adım kılavuz.</p>
-          <span class="product-tag tag-soon">Yakında</span>
+          <h3>KOSGEB Destek Başvuru Kiti 2026</h3>
+          <p>Danışmana binlerce lira ödemeden projenizi kendiniz yazın. Gerçek başvuru formlarına dayalı doldurma rehberi, kurul puanlama analizi, jüri taktikleri, bütçe hazırlama ve onay sonrası süreçler.</p>
+          <div class="product-features">
+            <span>📄 50+ Sayfa</span>
+            <span>🎯 2026 Güncel</span>
+            <span>📝 Form Rehberi</span>
+            <span>⚖️ Jüri Taktikleri</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">249 TL</span>
+            <span class="price-old">349 TL</span>
+            <span class="price-label">Lansman Fiyatı</span>
+          </div>
+          <!--
+            
+          -->
+          <a href="https://www.shopier.com/hibeatolyesi/45286613" target="_blank" rel="noopener" class="btn-buy">
+            Satın Al
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+          </a>
+          <p class="product-note">Ödeme sonrası anında e-posta ile teslim edilir.</p>
         </div>
 
-        <div class="product-card fade-up delay-1">
-          <div class="product-icon blue">🇪🇺</div>
-          <h3>STK'lar İçin AB Hibe Rehberi</h3>
-          <p>Sivil toplum kuruluşlarının başvurabileceği AB hibe programları rehberi. Program karşılaştırmaları, başvuru adımları ve proje tasarım şablonları.</p>
-          <span class="product-tag tag-soon">Yakında</span>
-        </div>
+        <div class="product-card fade-up delay-1"><div class="product-icon blue">🇪🇺</div><h3>STK'lar İçin AB Hibe Rehberi</h3><p>Sivil toplum kuruluşlarının başvurabileceği AB hibe programları rehberi. Program karşılaştırmaları, başvuru adımları ve proje tasarım şablonları.</p><span class="product-tag tag-soon">Yakında</span></div>
 
-        <div class="product-card fade-up delay-2">
-          <div class="product-icon orange">🌍</div>
-          <h3>Interreg &amp; IPA Başvuru Şablonları</h3>
-          <p>Interreg ve IPA programları için İngilizce proje özeti, ortaklık mektubu, bütçe şablonu ve değerlendirme kriterleri kontrol listesi.</p>
-          <span class="product-tag tag-new">İngilizce</span>
-        </div>
+        <div class="product-card fade-up delay-2"><div class="product-icon orange">🌍</div><h3>Interreg &amp; IPA Başvuru Şablonları</h3><p>Interreg ve IPA programları için İngilizce proje özeti, ortaklık mektubu, bütçe şablonu ve değerlendirme kriterleri kontrol listesi.</p><span class="product-tag tag-new">İngilizce</span></div>
 
-        <div class="product-card fade-up delay-3">
-          <div class="product-icon purple">🔍</div>
-          <h3>Hibe Arama Robotu</h3>
-          <p>Açık hibe ve destek çağrılarını tek bir yerden arayın. KOSGEB, TÜBİTAK, AB, Interreg ve daha fazlası. Tamamen ücretsiz.</p>
-          <span class="product-tag tag-free">Ücretsiz</span>
-        </div>
-
+        <div class="product-card fade-up delay-3"><div class="product-icon purple">🔍</div><h3>Hibe Arama Robotu</h3><p>Açık hibe ve destek çağrılarını tek bir yerden arayın. KOSGEB, TÜBİTAK, AB, Interreg ve daha fazlası. Tamamen ücretsiz.</p><span class="product-tag tag-free">Ücretsiz</span></div>
       </div>
     </div>
   </section>
 
-  <!-- HIBE ROBOTU -->
-  <section id="robot">
-    <div class="section-inner">
-      <div class="robot-container">
-        <div class="section-label fade-up">Ücretsiz Araç</div>
-        <h2 class="section-title fade-up" style="text-align:center;">Hibe Arama Robotu</h2>
-        <p class="section-desc fade-up" style="text-align:center; margin-left:auto; margin-right:auto;">Kurum türünüze ve ilgi alanınıza göre açık hibe ve destek çağrılarını arayın.</p>
+  <section id="robot"><div class="section-inner"><div class="robot-container"><div class="section-label fade-up">Ücretsiz Araç</div><h2 class="section-title fade-up" style="text-align:center">Hibe Arama Robotu</h2><p class="section-desc fade-up" style="text-align:center;margin-left:auto;margin-right:auto">Kurum türünüze ve ilgi alanınıza göre açık hibe ve destek çağrılarını arayın.</p><div class="robot-search-box fade-up"><div class="search-row"><select id="searchType"><option value="">Kurum Türü Seçin</option><option value="kobi">KOBİ / Şirket</option><option value="stk">STK / Dernek / Vakıf</option><option value="belediye">Belediye / Kamu</option><option value="universite">Üniversite / Araştırma</option></select><select id="searchProgram"><option value="">Program Seçin</option><option value="kosgeb">KOSGEB</option><option value="tubitak">TÜBİTAK</option><option value="ab">AB Hibeleri</option><option value="interreg">Interreg</option><option value="ipa">IPA</option><option value="kalkinma">Kalkınma Ajansı</option><option value="diger">Diğer</option></select></div><div class="search-row"><input type="text" id="searchKeyword" placeholder="Anahtar kelime (ör: dijitalleşme, yeşil dönüşüm, kültür)"></div><button class="search-btn" onclick="searchGrants()">Hibe Ara</button><div class="search-results" id="searchResults"></div></div><p class="fade-up" style="font-size:.8rem;color:var(--fg-light);margin-top:1.25rem">Veriler düzenli olarak güncellenmektedir. Son güncelleme: Mart 2026</p></div></div></section>
 
-        <div class="robot-search-box fade-up">
-          <div class="search-row">
-            <select id="searchType">
-              <option value="">Kurum Türü Seçin</option>
-              <option value="kobi">KOBİ / Şirket</option>
-              <option value="stk">STK / Dernek / Vakıf</option>
-              <option value="belediye">Belediye / Kamu</option>
-              <option value="universite">Üniversite / Araştırma</option>
-            </select>
-            <select id="searchProgram">
-              <option value="">Program Seçin</option>
-              <option value="kosgeb">KOSGEB</option>
-              <option value="tubitak">TÜBİTAK</option>
-              <option value="ab">AB Hibeleri</option>
-              <option value="interreg">Interreg</option>
-              <option value="ipa">IPA</option>
-              <option value="kalkinma">Kalkınma Ajansı</option>
-              <option value="diger">Diğer</option>
-            </select>
-          </div>
-          <div class="search-row">
-            <input type="text" id="searchKeyword" placeholder="Anahtar kelime (ör: dijitalleşme, yeşil dönüşüm, kültür)">
-          </div>
-          <button class="search-btn" onclick="searchGrants()">
-            Hibe Ara
-          </button>
-          <div class="search-results" id="searchResults"></div>
-        </div>
+  <section id="hakkimizda"><div class="section-inner"><div class="section-label fade-up">Hakkımızda</div><h2 class="section-title fade-up">Sahada edinilmiş bilgiyi, erişilebilir araçlara dönüştürüyoruz</h2><div class="about-content"><div class="about-text fade-up"><p>Hibe Atölyesi, hibe ve destek programlarına başvurmak isteyen KOBİ'ler, sivil toplum kuruluşları ve kamu kurumlarına yönelik pratik araçlar sunan bağımsız bir platformdur.</p><p>Rehberlerimiz ve şablonlarımız, AB fonları, KOSGEB destekleri ve uluslararası işbirliği programlarında (Interreg, IPA) yılların saha deneyimiyle oluşturulmuştur. Amacımız, profesyonel danışmanlık hizmetine erişimi olmayan kuruluşların da güçlü başvurular hazırlayabilmesini sağlamaktır.</p><p>Tüm içeriklerimiz uygulayıcı perspektifiyle hazırlanır: teorik değil, doğrudan kullanılabilir.</p></div><div class="about-stats fade-up delay-1"><div class="stat-card"><div class="num">10+</div><div class="label">Yıl saha deneyimi</div></div><div class="stat-card"><div class="num">4</div><div class="label">Program alanı</div></div><div class="stat-card"><div class="num">TR/EN</div><div class="label">İki dilde içerik</div></div><div class="stat-card"><div class="num">7/24</div><div class="label">Anında erişim</div></div></div></div></div></section>
 
-        <p class="fade-up" style="font-size: 0.8rem; color: var(--fg-light); margin-top: 1.25rem;">
-          Veriler düzenli olarak güncellenmektedir. Son güncelleme: Mart 2026
-        </p>
-      </div>
-    </div>
-  </section>
+  <section id="iletisim" style="padding-bottom:5rem"><div class="cta-section fade-up"><h2>Yeni rehberlerden ve açık çağrılardan haberdar olun</h2><p>E-posta listemize katılın. Spam yok, sadece işe yarar bilgi.</p><div class="cta-form"><input type="email" placeholder="E-posta adresiniz" id="emailInput"><button onclick="handleSubscribe()">Kaydol</button></div><p id="subscribeMsg" style="margin-top:1rem;font-size:.85rem;display:none"></p></div></section>
 
-  <!-- HAKKIMIZDA -->
-  <section id="hakkimizda">
-    <div class="section-inner">
-      <div class="section-label fade-up">Hakkımızda</div>
-      <h2 class="section-title fade-up">Sahada edinilmiş bilgiyi, erişilebilir araçlara dönüştürüyoruz</h2>
-      <div class="about-content">
-        <div class="about-text fade-up">
-          <p>Hibe Atölyesi, hibe ve destek programlarına başvurmak isteyen KOBİ'ler, sivil toplum kuruluşları ve kamu kurumlarına yönelik pratik araçlar sunan bağımsız bir platformdur.</p>
-          <p>Rehberlerimiz ve şablonlarımız, AB fonları, KOSGEB destekleri ve uluslararası işbirliği programlarında (Interreg, IPA) yılların saha deneyimiyle oluşturulmuştur. Amacımız, profesyonel danışmanlık hizmetine erişimi olmayan kuruluşların da güçlü başvurular hazırlayabilmesini sağlamaktır.</p>
-          <p>Tüm içeriklerimiz uygulayıcı perspektifiyle hazırlanır: teorik değil, doğrudan kullanılabilir.</p>
-        </div>
-        <div class="about-stats fade-up delay-1">
-          <div class="stat-card">
-            <div class="num">10+</div>
-            <div class="label">Yıl saha deneyimi</div>
-          </div>
-          <div class="stat-card">
-            <div class="num">4</div>
-            <div class="label">Program alanı</div>
-          </div>
-          <div class="stat-card">
-            <div class="num">TR/EN</div>
-            <div class="label">İki dilde içerik</div>
-          </div>
-          <div class="stat-card">
-            <div class="num">7/24</div>
-            <div class="label">Anında erişim</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA / NEWSLETTER -->
-  <section id="iletisim" style="padding-bottom: 5rem;">
-    <div class="cta-section fade-up">
-      <h2>Yeni rehberlerden ve açık çağrılardan haberdar olun</h2>
-      <p>E-posta listemize katılın. Spam yok, sadece işe yarar bilgi.</p>
-      <div class="cta-form">
-        <input type="email" placeholder="E-posta adresiniz" id="emailInput">
-        <button onclick="handleSubscribe()">Kaydol</button>
-      </div>
-      <p id="subscribeMsg" style="margin-top:1rem; font-size:0.85rem; display:none;"></p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2026 Hibe Atölyesi. Tüm hakları saklıdır.</p>
-    <p style="margin-top: 0.5rem;">
-      <a href="mailto:info@hibeatolyesi.com">info@hibeatolyesi.com</a>
-    </p>
-  </footer>
+  <footer><p>&copy; 2026 Hibe Atölyesi. Tüm hakları saklıdır.</p><p style="margin-top:.5rem"><a href="mailto:info@hibeatolyesi.com">info@hibeatolyesi.com</a></p></footer>
 
   <script>
-    // ---- NAV SCROLL ----
-    window.addEventListener('scroll', () => {
-      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
-    });
+    window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20)});
+    const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.fade-up').forEach(e=>observer.observe(e));
+    const grants=[{title:"KOSGEB KOBİ Teknolojik Ürün Yatırım Destek Programı",program:"kosgeb",types:["kobi"],desc:"Teknolojik ürün yatırımlarına yönelik geri ödemesiz ve geri ödemeli destek.",deadline:"Sürekli açık",amount:"6.000.000 TL'ye kadar",keywords:["teknoloji","üretim","yatırım","dijitalleşme"]},{title:"KOSGEB Girişimcilik Destek Programı",program:"kosgeb",types:["kobi"],desc:"Yeni kurulan işletmelere hibe ve kredi faiz desteği.",deadline:"Sürekli açık",amount:"400.000 TL'ye kadar",keywords:["girişimcilik","startup","yeni işletme"]},{title:"KOSGEB KOBİ Gelişim Destek Programı",program:"kosgeb",types:["kobi"],desc:"KOBİ'lerin yurtiçi ve yurtdışı fuar katılımı, nitelikli eleman istihdamı, eğitim ve danışmanlık destekleri.",deadline:"Sürekli açık",amount:"Destek türüne göre değişir",keywords:["fuar","istihdam","eğitim","danışmanlık","ihracat"]},{title:"TÜBİTAK 1507 KOBİ Ar-Ge Başlangıç Destek Programı",program:"tubitak",types:["kobi"],desc:"KOBİ'lerin Ar-Ge projelerine %75'e varan hibe desteği.",deadline:"Yılda birkaç dönem",amount:"2.400.000 TL'ye kadar",keywords:["ar-ge","inovasyon","teknoloji","yazılım"]},{title:"TÜBİTAK 1512 Girişimcilik Aşamalı Destek Programı (BiGG)",program:"tubitak",types:["kobi"],desc:"Teknoloji tabanlı girişimcilere aşamalı hibe desteği.",deadline:"Dönemsel",amount:"600.000 TL + 1.500.000 TL",keywords:["girişimcilik","teknoloji","startup","inovasyon"]},{title:"Interreg NEXT MED – 3. Çağrı (Beklenen)",program:"interreg",types:["belediye","stk","universite"],desc:"Akdeniz havzasında yeşil dönüşüm, dijitalleşme ve sürdürülebilir turizm projeleri.",deadline:"2026 2. yarı (beklenen)",amount:"Proje başına 1-3 M€",keywords:["akdeniz","yeşil","dijital","turizm","sürdürülebilirlik","kültür"]},{title:"Interreg Euro-MED Yönetişim Projeleri",program:"interreg",types:["belediye","stk","universite"],desc:"Euro-Akdeniz bölgesinde akıllı büyüme ve çevre koruma odaklı yönetişim projeleri.",deadline:"Dönemsel",amount:"Değişken",keywords:["yönetişim","akıllı şehir","çevre","inovasyon"]},{title:"IPA III – Sivil Toplum Tesisi",program:"ipa",types:["stk"],desc:"Türkiye'deki STK'ların AB standartlarına uyum ve kapasite geliştirme projeleri.",deadline:"Dönemsel",amount:"50.000 – 300.000 €",keywords:["sivil toplum","kapasite","demokrasi","insan hakları"]},{title:"IPA III – Çevre ve İklim Değişikliği",program:"ipa",types:["belediye","stk","kobi"],desc:"Çevre koruma, iklim değişikliğiyle mücadele ve yeşil dönüşüm projeleri.",deadline:"Dönemsel",amount:"Değişken",keywords:["çevre","iklim","yeşil dönüşüm","sürdürülebilirlik"]},{title:"AB Sivil Düşün Programı",program:"ab",types:["stk"],desc:"Türkiye'deki STK'ların kapasitelerini güçlendirmek için hibe ve teknik destek.",deadline:"Dönemsel çağrılar",amount:"25.000 – 150.000 €",keywords:["sivil toplum","kapasite","savunuculuk","hak"]},{title:"Kalkınma Ajansları Mali Destek Programları",program:"kalkinma",types:["kobi","stk","belediye"],desc:"İl ve bölge düzeyinde ekonomik ve sosyal kalkınma projeleri.",deadline:"Yıl boyunca (ajansa göre)",amount:"100.000 – 2.000.000 TL",keywords:["kalkınma","bölgesel","sosyal","ekonomik","turizm","tarım"]},{title:"AB Erasmus+ KA2 Stratejik Ortaklıklar",program:"ab",types:["stk","universite","belediye"],desc:"Eğitim, gençlik ve spor alanlarında uluslararası ortaklık projeleri.",deadline:"Yıllık çağrılar (genellikle Mart)",amount:"120.000 – 400.000 €",keywords:["eğitim","gençlik","spor","kültür","değişim"]}];
+    function searchGrants(){const t=document.getElementById('searchType').value,p=document.getElementById('searchProgram').value,k=document.getElementById('searchKeyword').value.toLowerCase().trim(),r=document.getElementById('searchResults');let f=grants;if(t)f=f.filter(g=>g.types.includes(t));if(p)f=f.filter(g=>g.program===p);if(k)f=f.filter(g=>g.title.toLowerCase().includes(k)||g.desc.toLowerCase().includes(k)||g.keywords.some(w=>w.includes(k)));if(!f.length){r.innerHTML='<div class="no-results">Arama kriterlerinize uygun sonuç bulunamadı.</div>';return}r.innerHTML=f.map(g=>`<div class="result-item"><h4>${g.title}</h4><p>${g.desc}</p><div class="result-meta"><span>📅 ${g.deadline}</span><span>💰 ${g.amount}</span></div></div>`).join('')}
+    function handleSubscribe(){const e=document.getElementById('emailInput').value,m=document.getElementById('subscribeMsg');if(e&&e.includes('@')){m.textContent='✓ Kaydınız alınmıştır. Teşekkürler!';m.style.display='block';m.style.color='rgba(255,255,255,.8)';document.getElementById('emailInput').value=''}else{m.textContent='Lütfen geçerli bir e-posta adresi girin.';m.style.display='block';m.style.color='#ff8a80'}}
+    document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'))});
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hibe Atölyesi — Hibe ve Destek Başvuru Rehberleri, Şablonlar ve Araçlar</title>
+  <meta name="description" content="KOSGEB, AB hibeleri, Interreg ve IPA programları için başvuru rehberleri, şablonlar ve ücretsiz hibe arama aracı. Hibe Atölyesi ile fonlara erişin.">
+  <meta name="keywords" content="KOSGEB başvuru, AB hibe, Interreg, IPA, hibe rehberi, hibe şablonu, fon başvurusu, STK hibe, KOSGEB destek kiti">
+  <meta property="og:title" content="Hibe Atölyesi — Fonlara Erişimin Kısa Yolu">
+  <meta property="og:description" content="KOSGEB, AB hibeleri, Interreg ve IPA programları için başvuru rehberleri, şablonlar ve ücretsiz hibe arama aracı.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hibeatolyesi.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--fg:#1a1a1a;--fg-muted:#5a5a5a;--fg-light:#8a8a8a;--bg:#fafaf8;--bg-card:#fff;--bg-alt:#f2f1ed;--accent:#2c5f2d;--accent-light:#e8f0e8;--accent-hover:#1e4620;--border:#e5e4e0;--border-light:#eeede9;--serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',system-ui,-apple-system,sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}::selection{background:var(--accent-light);color:var(--accent)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);transition:box-shadow .3s}nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}.nav-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.5rem}.nav-logo{font-family:var(--serif);font-size:1.25rem;color:var(--fg);text-decoration:none;letter-spacing:-.01em}.nav-logo span{color:var(--accent)}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--fg-muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s;letter-spacing:.01em}.nav-links a:hover{color:var(--accent)}.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}.hamburger svg{width:24px;height:24px;color:var(--fg)}
+    .hero{padding:10rem 1.5rem 5rem;max-width:800px;margin:0 auto;text-align:center}.hero-badge{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:.35rem 1rem;border-radius:100px;margin-bottom:2rem}.hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.15;color:var(--fg);margin-bottom:1.5rem;letter-spacing:-.02em}.hero p{font-size:1.125rem;color:var(--fg-muted);max-width:580px;margin:0 auto 2.5rem;line-height:1.8}.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.75rem;border-radius:8px;font-family:var(--sans);font-size:.9375rem;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none}.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}.btn-secondary{background:transparent;color:var(--fg);border:1.5px solid var(--border)}.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}.btn svg{width:18px;height:18px}
+    section{padding:5rem 1.5rem}.section-inner{max-width:1080px;margin:0 auto}.section-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.75rem}.section-title{font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.2;margin-bottom:1rem;letter-spacing:-.01em}.section-desc{font-size:1.05rem;color:var(--fg-muted);max-width:600px;line-height:1.8;margin-bottom:3rem}
+    .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}.product-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:12px;padding:2rem;transition:all .25s;position:relative;overflow:hidden}.product-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(44,95,45,.08);transform:translateY(-2px)}.product-card.featured{border-color:var(--accent);box-shadow:0 2px 16px rgba(44,95,45,.10)}.product-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.5rem}.product-icon.green{background:#e8f5e9}.product-icon.blue{background:#e3f2fd}.product-icon.orange{background:#fff3e0}.product-icon.purple{background:#f3e5f5}.product-card h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:.6rem;letter-spacing:-.01em}.product-card p{font-size:.9rem;color:var(--fg-muted);line-height:1.7;margin-bottom:1.25rem}.product-tag{display:inline-block;font-size:.75rem;font-weight:600;padding:.25rem .75rem;border-radius:100px}.tag-soon{background:#fff8e1;color:#f57f17}.tag-free{background:var(--accent-light);color:var(--accent)}.tag-new{background:#e3f2fd;color:#1565c0}
+    .product-ribbon{position:absolute;top:12px;right:-32px;background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.05em;padding:.3rem 2.5rem;transform:rotate(45deg);text-transform:uppercase}.product-features{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}.product-features span{font-size:.75rem;color:var(--fg-muted);background:var(--bg-alt);padding:.2rem .6rem;border-radius:4px}.product-price{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1rem}.price-current{font-family:var(--serif);font-size:1.75rem;color:var(--accent);font-weight:700}.price-old{font-size:1rem;color:var(--fg-light);text-decoration:line-through}.price-label{font-size:.75rem;color:var(--accent);background:var(--accent-light);padding:.15rem .5rem;border-radius:4px;font-weight:600}
+    .btn-buy{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:8px;background:var(--accent);color:#fff;font-family:var(--sans);font-size:.9rem;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer}.btn-buy:hover{background:var(--accent-hover);transform:translateY(-1px)}.btn-buy svg{width:16px;height:16px}.product-note{font-size:.75rem;color:var(--fg-light);margin-top:.6rem}
+    #robot{background:var(--bg-alt)}.robot-container{max-width:720px;margin:0 auto;text-align:center}.robot-search-box{background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;padding:2rem;margin-top:2rem;transition:border-color .2s}.robot-search-box:focus-within{border-color:var(--accent)}.search-row{display:flex;gap:.75rem;margin-bottom:1rem}.search-row select,.search-row input{flex:1;padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:.9rem;background:var(--bg);color:var(--fg);transition:border-color .2s;appearance:auto}.search-row select:focus,.search-row input:focus{outline:none;border-color:var(--accent)}.search-btn{width:100%;padding:.85rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:.9375rem;font-weight:600;cursor:pointer;transition:background .2s}.search-btn:hover{background:var(--accent-hover)}.search-results{margin-top:1.5rem;text-align:left}.result-item{padding:1rem 0;border-bottom:1px solid var(--border-light)}.result-item:last-child{border-bottom:none}.result-item h4{font-size:.95rem;margin-bottom:.25rem}.result-item p{font-size:.825rem;color:var(--fg-muted);margin:0}.result-meta{display:flex;gap:1rem;margin-top:.4rem;font-size:.75rem;color:var(--fg-light)}.result-meta span{display:flex;align-items:center;gap:.25rem}.no-results{padding:2rem;color:var(--fg-muted);font-size:.9rem}
+    .about-content{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}.about-text p{font-size:1rem;color:var(--fg-muted);line-height:1.8;margin-bottom:1rem}.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}.stat-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:10px;padding:1.5rem;text-align:center}.stat-card .num{font-family:var(--serif);font-size:2rem;color:var(--accent);line-height:1}.stat-card .label{font-size:.8rem;color:var(--fg-muted);margin-top:.35rem}
+    .cta-section{background:var(--fg);color:#fff;border-radius:16px;padding:3.5rem;text-align:center;margin:0 auto;max-width:1080px}.cta-section h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.75rem}.cta-section p{color:rgba(255,255,255,.7);margin-bottom:2rem;font-size:1rem}.cta-form{display:flex;gap:.75rem;max-width:460px;margin:0 auto}.cta-form input{flex:1;padding:.85rem 1.25rem;border:1.5px solid rgba(255,255,255,.2);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-family:var(--sans);font-size:.9rem}.cta-form input::placeholder{color:rgba(255,255,255,.4)}.cta-form input:focus{outline:none;border-color:rgba(255,255,255,.5)}.cta-form button{padding:.85rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:.9rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s}.cta-form button:hover{background:var(--accent-hover)}
+    footer{padding:3rem 1.5rem;border-top:1px solid var(--border-light);text-align:center}footer p{font-size:.825rem;color:var(--fg-light)}footer a{color:var(--fg-muted);text-decoration:none}footer a:hover{color:var(--accent)}
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+    @media(max-width:768px){.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(250,250,248,.98);backdrop-filter:blur(12px);padding:1.5rem;gap:1.25rem;border-bottom:1px solid var(--border-light)}.hamburger{display:block}.hero{padding:8rem 1.5rem 3rem}.products-grid{grid-template-columns:1fr}.about-content{grid-template-columns:1fr}.search-row{flex-direction:column}.cta-section{padding:2.5rem 1.5rem;border-radius:0}.cta-form{flex-direction:column}section{padding:3.5rem 1.5rem}}
+  </style>
+</head>
+<body>
+  <nav id="navbar"><div class="nav-inner"><a href="#" class="nav-logo">hibe<span>atölyesi</span></a><ul class="nav-links" id="navLinks"><li><a href="#urunler">Ürünler</a></li><li><a href="#robot">Hibe Arama</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#iletisim">İletişim</a></li></ul><button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menü"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div></nav>
 
-    // ---- FADE UP ON SCROLL ----
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  <header class="hero">
+    <div class="hero-badge fade-up">Rehberler · Şablonlar · Araçlar</div>
+    <h1 class="fade-up delay-1">Hibe ve destek başvurularında işinizi kolaylaştırıyoruz</h1>
+    <p class="fade-up delay-2">KOSGEB destekleri, AB hibeleri, Interreg ve IPA programları için hazır başvuru rehberleri, profesyonel şablonlar ve ücretsiz hibe arama aracı.</p>
+    <div class="hero-cta fade-up delay-3">
+      <a href="#urunler" class="btn btn-primary">Ürünleri İncele <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+      <a href="#robot" class="btn btn-secondary">Ücretsiz Hibe Ara <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></a>
+    </div>
+  </header>
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  <section id="urunler">
+    <div class="section-inner">
+      <div class="section-label fade-up">Ürünler</div>
+      <h2 class="section-title fade-up">Başvurunuzu güçlendirecek rehber ve şablonlar</h2>
+      <p class="section-desc fade-up">Her bir ürün, yılların saha deneyimiyle hazırlanmış pratik araçlardır. İndirin, doldurun, başvurun.</p>
+      <div class="products-grid">
 
-    // ---- SAMPLE GRANT DATA ----
-    const grants = [
-      {
-        title: "KOSGEB KOBİ Teknolojik Ürün Yatırım Destek Programı",
-        program: "kosgeb", types: ["kobi"],
-        desc: "Teknolojik ürün yatırımlarına yönelik geri ödemesiz ve geri ödemeli destek.",
-        deadline: "Sürekli açık", amount: "6.000.000 TL'ye kadar",
-        keywords: ["teknoloji", "üretim", "yatırım", "dijitalleşme"]
-      },
-      {
-        title: "KOSGEB Girişimcilik Destek Programı",
-        program: "kosgeb", types: ["kobi"],
-        desc: "Yeni kurulan işletmelere hibe ve kredi faiz desteği.",
-        deadline: "Sürekli açık", amount: "400.000 TL'ye kadar",
-        keywords: ["girişimcilik", "startup", "yeni işletme"]
-      },
-      {
-        title: "KOSGEB KOBİ Gelişim Destek Programı",
-        program: "kosgeb", types: ["kobi"],
-        desc: "KOBİ'lerin yurtiçi ve yurtdışı fuar katılımı, nitelikli eleman istihdamı, eğitim ve danışmanlık destekleri.",
-        deadline: "Sürekli açık", amount: "Destek türüne göre değişir",
-        keywords: ["fuar", "istihdam", "eğitim", "danışmanlık", "ihracat"]
-      },
-      {
-        title: "TÜBİTAK 1507 KOBİ Ar-Ge Başlangıç Destek Programı",
-        program: "tubitak", types: ["kobi"],
-        desc: "KOBİ'lerin Ar-Ge projelerine %75'e varan hibe desteği.",
-        deadline: "Yılda birkaç dönem", amount: "2.400.000 TL'ye kadar",
-        keywords: ["ar-ge", "inovasyon", "teknoloji", "yazılım"]
-      },
-      {
-        title: "TÜBİTAK 1512 Girişimcilik Aşamalı Destek Programı (BiGG)",
-        program: "tubitak", types: ["kobi"],
-        desc: "Teknoloji tabanlı girişimcilere aşamalı hibe desteği.",
-        deadline: "Dönemsel", amount: "600.000 TL (1. aşama) + 1.500.000 TL (2. aşama)",
-        keywords: ["girişimcilik", "teknoloji", "startup", "inovasyon"]
-      },
-      {
-        title: "Interreg NEXT MED – 3. Çağrı (Beklenen)",
-        program: "interreg", types: ["belediye", "stk", "universite"],
-        desc: "Akdeniz havzasında yeşil dönüşüm, dijitalleşme ve sürdürülebilir turizm alanlarında işbirliği projeleri.",
-        deadline: "2026 2. yarı (beklenen)", amount: "Proje başına 1-3 M€",
-        keywords: ["akdeniz", "yeşil", "dijital", "turizm", "sürdürülebilirlik", "kültür"]
-      },
-      {
-        title: "Interreg Euro-MED Yönetişim Projeleri",
-        program: "interreg", types: ["belediye", "stk", "universite"],
-        desc: "Euro-Akdeniz bölgesinde akıllı büyüme ve çevre koruma odaklı yönetişim projeleri.",
-        deadline: "Dönemsel", amount: "Değişken",
-        keywords: ["yönetişim", "akıllı şehir", "çevre", "inovasyon"]
-      },
-      {
-        title: "IPA III – Sivil Toplum Tesisi",
-        program: "ipa", types: ["stk"],
-        desc: "Türkiye'deki STK'ların AB standartlarına uyum ve kapasite geliştirme projeleri.",
-        deadline: "Dönemsel", amount: "50.000 – 300.000 €",
-        keywords: ["sivil toplum", "kapasite", "demokrasi", "insan hakları"]
-      },
-      {
-        title: "IPA III – Çevre ve İklim Değişikliği",
-        program: "ipa", types: ["belediye", "stk", "kobi"],
-        desc: "Çevre koruma, iklim değişikliğiyle mücadele ve yeşil dönüşüm projeleri.",
-        deadline: "Dönemsel", amount: "Değişken",
-        keywords: ["çevre", "iklim", "yeşil dönüşüm", "sürdürülebilirlik"]
-      },
-      {
-        title: "AB Sivil Düşün Programı",
-        program: "ab", types: ["stk"],
-        desc: "Türkiye'deki sivil toplum kuruluşlarının kapasitelerini güçlendirmek için hibe ve teknik destek.",
-        deadline: "Dönemsel çağrılar", amount: "25.000 – 150.000 €",
-        keywords: ["sivil toplum", "kapasite", "savunuculuk", "hak"]
-      },
-      {
-        title: "Kalkınma Ajansları Mali Destek Programları",
-        program: "kalkinma", types: ["kobi", "stk", "belediye"],
-        desc: "İl ve bölge düzeyinde ekonomik ve sosyal kalkınma projeleri. Her ajans kendi çağrısını açar.",
-        deadline: "Yıl boyunca (ajansa göre)", amount: "100.000 – 2.000.000 TL",
-        keywords: ["kalkınma", "bölgesel", "sosyal", "ekonomik", "turizm", "tarım"]
-      },
-      {
-        title: "AB Erasmus+ KA2 Stratejik Ortaklıklar",
-        program: "ab", types: ["stk", "universite", "belediye"],
-        desc: "Eğitim, gençlik ve spor alanlarında uluslararası ortaklık projeleri.",
-        deadline: "Yıllık çağrılar (genellikle Mart)", amount: "120.000 – 400.000 €",
-        keywords: ["eğitim", "gençlik", "spor", "kültür", "değişim"]
-      }
-    ];
-
-    function searchGrants() {
-      const type = document.getElementById('searchType').value;
-      const program = document.getElementById('searchProgram').value;
-      const keyword = document.getElementById('searchKeyword').value.toLowerCase().trim();
-      const resultsEl = document.getElementById('searchResults');
-
-      let filtered = grants;
-
-      if (type) {
-        filtered = filtered.filter(g => g.types.includes(type));
-      }
-      if (program) {
-        filtered = filtered.filter(g => g.program === program);
-      }
-      if (keyword) {
-        filtered = filtered.filter(g =>
-          g.title.toLowerCase().includes(keyword) ||
-          g.desc.toLowerCase().includes(keyword) ||
-          g.keywords.some(k => k.includes(keyword))
-        );
-      }
-
-      if (filtered.length === 0) {
-        resultsEl.innerHTML = '<div class="no-results">Arama kriterlerinize uygun sonuç bulunamadı. Filtreleri değiştirip tekrar deneyin.</div>';
-        return;
-      }
-
-      resultsEl.innerHTML = filtered.map(g => `
-        <div class="result-item">
-          <h4>${g.title}</h4>
-          <p>${g.desc}</p>
-          <div class="result-meta">
-            <span>📅 ${g.deadline}</span>
-            <span>💰 ${g.amount}</span>
+        <!-- ★ KOSGEB KIT — SATIŞ KARTI ★ -->
+        <div class="product-card featured fade-up">
+          <div class="product-ribbon">Yeni</div>
+          <div class="product-icon green">📋</div>
+          <h3>KOSGEB Destek Başvuru Kiti 2026</h3>
+          <p>Danışmana binlerce lira ödemeden projenizi kendiniz yazın. Gerçek başvuru formlarına dayalı doldurma rehberi, kurul puanlama analizi, jüri taktikleri, bütçe hazırlama ve onay sonrası süreçler.</p>
+          <div class="product-features">
+            <span>📄 50+ Sayfa</span>
+            <span>🎯 2026 Güncel</span>
+            <span>📝 Form Rehberi</span>
+            <span>⚖️ Jüri Taktikleri</span>
           </div>
+          <div class="product-price">
+            <span class="price-current">249 TL</span>
+            <span class="price-old">349 TL</span>
+            <span class="price-label">Lansman Fiyatı</span>
+          </div>
+          <!--
+            ╔═══════════════════════════════════════════════════╗
+            ║  SHOPIER LİNKİNİ AŞAĞIDAKİ href İÇİNE YAPIŞTIR  ║
+            ╚═══════════════════════════════════════════════════╝
+          -->
+          <a href="https://www.shopier.com/BURAYA-SHOPIER-LINKI" target="_blank" rel="noopener" class="btn-buy">
+            Satın Al
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+          </a>
+          <p class="product-note">Ödeme sonrası anında e-posta ile teslim edilir.</p>
         </div>
-      `).join('');
-    }
 
-    // ---- SUBSCRIBE ----
-    function handleSubscribe() {
-      const email = document.getElementById('emailInput').value;
-      const msg = document.getElementById('subscribeMsg');
-      if (email && email.includes('@')) {
-        msg.textContent = '✓ Kaydınız alınmıştır. Teşekkürler!';
-        msg.style.display = 'block';
-        msg.style.color = 'rgba(255,255,255,0.8)';
-        document.getElementById('emailInput').value = '';
-      } else {
-        msg.textContent = 'Lütfen geçerli bir e-posta adresi girin.';
-        msg.style.display = 'block';
-        msg.style.color = '#ff8a80';
-      }
-    }
+        <div class="product-card fade-up delay-1"><div class="product-icon blue">🇪🇺</div><h3>STK'lar İçin AB Hibe Rehberi</h3><p>Sivil toplum kuruluşlarının başvurabileceği AB hibe programları rehberi. Program karşılaştırmaları, başvuru adımları ve proje tasarım şablonları.</p><span class="product-tag tag-soon">Yakında</span></div>
 
-    // Close mobile nav on link click
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('open');
-      });
-    });
+        <div class="product-card fade-up delay-2"><div class="product-icon orange">🌍</div><h3>Interreg &amp; IPA Başvuru Şablonları</h3><p>Interreg ve IPA programları için İngilizce proje özeti, ortaklık mektubu, bütçe şablonu ve değerlendirme kriterleri kontrol listesi.</p><span class="product-tag tag-new">İngilizce</span></div>
+
+        <div class="product-card fade-up delay-3"><div class="product-icon purple">🔍</div><h3>Hibe Arama Robotu</h3><p>Açık hibe ve destek çağrılarını tek bir yerden arayın. KOSGEB, TÜBİTAK, AB, Interreg ve daha fazlası. Tamamen ücretsiz.</p><span class="product-tag tag-free">Ücretsiz</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="robot"><div class="section-inner"><div class="robot-container"><div class="section-label fade-up">Ücretsiz Araç</div><h2 class="section-title fade-up" style="text-align:center">Hibe Arama Robotu</h2><p class="section-desc fade-up" style="text-align:center;margin-left:auto;margin-right:auto">Kurum türünüze ve ilgi alanınıza göre açık hibe ve destek çağrılarını arayın.</p><div class="robot-search-box fade-up"><div class="search-row"><select id="searchType"><option value="">Kurum Türü Seçin</option><option value="kobi">KOBİ / Şirket</option><option value="stk">STK / Dernek / Vakıf</option><option value="belediye">Belediye / Kamu</option><option value="universite">Üniversite / Araştırma</option></select><select id="searchProgram"><option value="">Program Seçin</option><option value="kosgeb">KOSGEB</option><option value="tubitak">TÜBİTAK</option><option value="ab">AB Hibeleri</option><option value="interreg">Interreg</option><option value="ipa">IPA</option><option value="kalkinma">Kalkınma Ajansı</option><option value="diger">Diğer</option></select></div><div class="search-row"><input type="text" id="searchKeyword" placeholder="Anahtar kelime (ör: dijitalleşme, yeşil dönüşüm, kültür)"></div><button class="search-btn" onclick="searchGrants()">Hibe Ara</button><div class="search-results" id="searchResults"></div></div><p class="fade-up" style="font-size:.8rem;color:var(--fg-light);margin-top:1.25rem">Veriler düzenli olarak güncellenmektedir. Son güncelleme: Mart 2026</p></div></div></section>
+
+  <section id="hakkimizda"><div class="section-inner"><div class="section-label fade-up">Hakkımızda</div><h2 class="section-title fade-up">Sahada edinilmiş bilgiyi, erişilebilir araçlara dönüştürüyoruz</h2><div class="about-content"><div class="about-text fade-up"><p>Hibe Atölyesi, hibe ve destek programlarına başvurmak isteyen KOBİ'ler, sivil toplum kuruluşları ve kamu kurumlarına yönelik pratik araçlar sunan bağımsız bir platformdur.</p><p>Rehberlerimiz ve şablonlarımız, AB fonları, KOSGEB destekleri ve uluslararası işbirliği programlarında (Interreg, IPA) yılların saha deneyimiyle oluşturulmuştur. Amacımız, profesyonel danışmanlık hizmetine erişimi olmayan kuruluşların da güçlü başvurular hazırlayabilmesini sağlamaktır.</p><p>Tüm içeriklerimiz uygulayıcı perspektifiyle hazırlanır: teorik değil, doğrudan kullanılabilir.</p></div><div class="about-stats fade-up delay-1"><div class="stat-card"><div class="num">10+</div><div class="label">Yıl saha deneyimi</div></div><div class="stat-card"><div class="num">4</div><div class="label">Program alanı</div></div><div class="stat-card"><div class="num">TR/EN</div><div class="label">İki dilde içerik</div></div><div class="stat-card"><div class="num">7/24</div><div class="label">Anında erişim</div></div></div></div></div></section>
+
+  <section id="iletisim" style="padding-bottom:5rem"><div class="cta-section fade-up"><h2>Yeni rehberlerden ve açık çağrılardan haberdar olun</h2><p>E-posta listemize katılın. Spam yok, sadece işe yarar bilgi.</p><div class="cta-form"><input type="email" placeholder="E-posta adresiniz" id="emailInput"><button onclick="handleSubscribe()">Kaydol</button></div><p id="subscribeMsg" style="margin-top:1rem;font-size:.85rem;display:none"></p></div></section>
+
+  <footer><p>&copy; 2026 Hibe Atölyesi. Tüm hakları saklıdır.</p><p style="margin-top:.5rem"><a href="mailto:info@hibeatolyesi.com">info@hibeatolyesi.com</a></p></footer>
+
+  <script>
+    window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20)});
+    const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.fade-up').forEach(e=>observer.observe(e));
+    const grants=[{title:"KOSGEB KOBİ Teknolojik Ürün Yatırım Destek Programı",program:"kosgeb",types:["kobi"],desc:"Teknolojik ürün yatırımlarına yönelik geri ödemesiz ve geri ödemeli destek.",deadline:"Sürekli açık",amount:"6.000.000 TL'ye kadar",keywords:["teknoloji","üretim","yatırım","dijitalleşme"]},{title:"KOSGEB Girişimcilik Destek Programı",program:"kosgeb",types:["kobi"],desc:"Yeni kurulan işletmelere hibe ve kredi faiz desteği.",deadline:"Sürekli açık",amount:"400.000 TL'ye kadar",keywords:["girişimcilik","startup","yeni işletme"]},{title:"KOSGEB KOBİ Gelişim Destek Programı",program:"kosgeb",types:["kobi"],desc:"KOBİ'lerin yurtiçi ve yurtdışı fuar katılımı, nitelikli eleman istihdamı, eğitim ve danışmanlık destekleri.",deadline:"Sürekli açık",amount:"Destek türüne göre değişir",keywords:["fuar","istihdam","eğitim","danışmanlık","ihracat"]},{title:"TÜBİTAK 1507 KOBİ Ar-Ge Başlangıç Destek Programı",program:"tubitak",types:["kobi"],desc:"KOBİ'lerin Ar-Ge projelerine %75'e varan hibe desteği.",deadline:"Yılda birkaç dönem",amount:"2.400.000 TL'ye kadar",keywords:["ar-ge","inovasyon","teknoloji","yazılım"]},{title:"TÜBİTAK 1512 Girişimcilik Aşamalı Destek Programı (BiGG)",program:"tubitak",types:["kobi"],desc:"Teknoloji tabanlı girişimcilere aşamalı hibe desteği.",deadline:"Dönemsel",amount:"600.000 TL + 1.500.000 TL",keywords:["girişimcilik","teknoloji","startup","inovasyon"]},{title:"Interreg NEXT MED – 3. Çağrı (Beklenen)",program:"interreg",types:["belediye","stk","universite"],desc:"Akdeniz havzasında yeşil dönüşüm, dijitalleşme ve sürdürülebilir turizm projeleri.",deadline:"2026 2. yarı (beklenen)",amount:"Proje başına 1-3 M€",keywords:["akdeniz","yeşil","dijital","turizm","sürdürülebilirlik","kültür"]},{title:"Interreg Euro-MED Yönetişim Projeleri",program:"interreg",types:["belediye","stk","universite"],desc:"Euro-Akdeniz bölgesinde akıllı büyüme ve çevre koruma odaklı yönetişim projeleri.",deadline:"Dönemsel",amount:"Değişken",keywords:["yönetişim","akıllı şehir","çevre","inovasyon"]},{title:"IPA III – Sivil Toplum Tesisi",program:"ipa",types:["stk"],desc:"Türkiye'deki STK'ların AB standartlarına uyum ve kapasite geliştirme projeleri.",deadline:"Dönemsel",amount:"50.000 – 300.000 €",keywords:["sivil toplum","kapasite","demokrasi","insan hakları"]},{title:"IPA III – Çevre ve İklim Değişikliği",program:"ipa",types:["belediye","stk","kobi"],desc:"Çevre koruma, iklim değişikliğiyle mücadele ve yeşil dönüşüm projeleri.",deadline:"Dönemsel",amount:"Değişken",keywords:["çevre","iklim","yeşil dönüşüm","sürdürülebilirlik"]},{title:"AB Sivil Düşün Programı",program:"ab",types:["stk"],desc:"Türkiye'deki STK'ların kapasitelerini güçlendirmek için hibe ve teknik destek.",deadline:"Dönemsel çağrılar",amount:"25.000 – 150.000 €",keywords:["sivil toplum","kapasite","savunuculuk","hak"]},{title:"Kalkınma Ajansları Mali Destek Programları",program:"kalkinma",types:["kobi","stk","belediye"],desc:"İl ve bölge düzeyinde ekonomik ve sosyal kalkınma projeleri.",deadline:"Yıl boyunca (ajansa göre)",amount:"100.000 – 2.000.000 TL",keywords:["kalkınma","bölgesel","sosyal","ekonomik","turizm","tarım"]},{title:"AB Erasmus+ KA2 Stratejik Ortaklıklar",program:"ab",types:["stk","universite","belediye"],desc:"Eğitim, gençlik ve spor alanlarında uluslararası ortaklık projeleri.",deadline:"Yıllık çağrılar (genellikle Mart)",amount:"120.000 – 400.000 €",keywords:["eğitim","gençlik","spor","kültür","değişim"]}];
+    function searchGrants(){const t=document.getElementById('searchType').value,p=document.getElementById('searchProgram').value,k=document.getElementById('searchKeyword').value.toLowerCase().trim(),r=document.getElementById('searchResults');let f=grants;if(t)f=f.filter(g=>g.types.includes(t));if(p)f=f.filter(g=>g.program===p);if(k)f=f.filter(g=>g.title.toLowerCase().includes(k)||g.desc.toLowerCase().includes(k)||g.keywords.some(w=>w.includes(k)));if(!f.length){r.innerHTML='<div class="no-results">Arama kriterlerinize uygun sonuç bulunamadı.</div>';return}r.innerHTML=f.map(g=>`<div class="result-item"><h4>${g.title}</h4><p>${g.desc}</p><div class="result-meta"><span>📅 ${g.deadline}</span><span>💰 ${g.amount}</span></div></div>`).join('')}
+    function handleSubscribe(){const e=document.getElementById('emailInput').value,m=document.getElementById('subscribeMsg');if(e&&e.includes('@')){m.textContent='✓ Kaydınız alınmıştır. Teşekkürler!';m.style.display='block';m.style.color='rgba(255,255,255,.8)';document.getElementById('emailInput').value=''}else{m.textContent='Lütfen geçerli bir e-posta adresi girin.';m.style.display='block';m.style.color='#ff8a80'}}
+    document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'))});
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hibe Atölyesi — Hibe ve Destek Başvuru Rehberleri, Şablonlar ve Araçlar</title>
+  <meta name="description" content="KOSGEB, AB hibeleri, Interreg ve IPA programları için başvuru rehberleri, şablonlar ve ücretsiz hibe arama aracı. Hibe Atölyesi ile fonlara erişin.">
+  <meta name="keywords" content="KOSGEB başvuru, AB hibe, Interreg, IPA, hibe rehberi, hibe şablonu, fon başvurusu, STK hibe, KOSGEB destek kiti">
+  <meta property="og:title" content="Hibe Atölyesi — Fonlara Erişimin Kısa Yolu">
+  <meta property="og:description" content="KOSGEB, AB hibeleri, Interreg ve IPA programları için başvuru rehberleri, şablonlar ve ücretsiz hibe arama aracı.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hibeatolyesi.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--fg:#1a1a1a;--fg-muted:#5a5a5a;--fg-light:#8a8a8a;--bg:#fafaf8;--bg-card:#fff;--bg-alt:#f2f1ed;--accent:#2c5f2d;--accent-light:#e8f0e8;--accent-hover:#1e4620;--border:#e5e4e0;--border-light:#eeede9;--serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',system-ui,-apple-system,sans-serif}
+    *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--sans);color:var(--fg);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}::selection{background:var(--accent-light);color:var(--accent)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,248,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);transition:box-shadow .3s}nav.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.06)}.nav-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.5rem}.nav-logo{font-family:var(--serif);font-size:1.25rem;color:var(--fg);text-decoration:none;letter-spacing:-.01em}.nav-logo span{color:var(--accent)}.nav-links{display:flex;gap:2rem;list-style:none}.nav-links a{color:var(--fg-muted);text-decoration:none;font-size:.875rem;font-weight:500;transition:color .2s;letter-spacing:.01em}.nav-links a:hover{color:var(--accent)}.hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}.hamburger svg{width:24px;height:24px;color:var(--fg)}
+    .hero{padding:10rem 1.5rem 5rem;max-width:800px;margin:0 auto;text-align:center}.hero-badge{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-light);padding:.35rem 1rem;border-radius:100px;margin-bottom:2rem}.hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.15;color:var(--fg);margin-bottom:1.5rem;letter-spacing:-.02em}.hero p{font-size:1.125rem;color:var(--fg-muted);max-width:580px;margin:0 auto 2.5rem;line-height:1.8}.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.75rem;border-radius:8px;font-family:var(--sans);font-size:.9375rem;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none}.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}.btn-secondary{background:transparent;color:var(--fg);border:1.5px solid var(--border)}.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}.btn svg{width:18px;height:18px}
+    section{padding:5rem 1.5rem}.section-inner{max-width:1080px;margin:0 auto}.section-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.75rem}.section-title{font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);line-height:1.2;margin-bottom:1rem;letter-spacing:-.01em}.section-desc{font-size:1.05rem;color:var(--fg-muted);max-width:600px;line-height:1.8;margin-bottom:3rem}
+    .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}.product-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:12px;padding:2rem;transition:all .25s;position:relative;overflow:hidden}.product-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(44,95,45,.08);transform:translateY(-2px)}.product-card.featured{border-color:var(--accent);box-shadow:0 2px 16px rgba(44,95,45,.10)}.product-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:1.5rem}.product-icon.green{background:#e8f5e9}.product-icon.blue{background:#e3f2fd}.product-icon.orange{background:#fff3e0}.product-icon.purple{background:#f3e5f5}.product-card h3{font-family:var(--serif);font-size:1.25rem;margin-bottom:.6rem;letter-spacing:-.01em}.product-card p{font-size:.9rem;color:var(--fg-muted);line-height:1.7;margin-bottom:1.25rem}.product-tag{display:inline-block;font-size:.75rem;font-weight:600;padding:.25rem .75rem;border-radius:100px}.tag-soon{background:#fff8e1;color:#f57f17}.tag-free{background:var(--accent-light);color:var(--accent)}.tag-new{background:#e3f2fd;color:#1565c0}
+    .product-ribbon{position:absolute;top:12px;right:-32px;background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.05em;padding:.3rem 2.5rem;transform:rotate(45deg);text-transform:uppercase}.product-features{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}.product-features span{font-size:.75rem;color:var(--fg-muted);background:var(--bg-alt);padding:.2rem .6rem;border-radius:4px}.product-price{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1rem}.price-current{font-family:var(--serif);font-size:1.75rem;color:var(--accent);font-weight:700}.price-old{font-size:1rem;color:var(--fg-light);text-decoration:line-through}.price-label{font-size:.75rem;color:var(--accent);background:var(--accent-light);padding:.15rem .5rem;border-radius:4px;font-weight:600}
+    .btn-buy{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:8px;background:var(--accent);color:#fff;font-family:var(--sans);font-size:.9rem;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer}.btn-buy:hover{background:var(--accent-hover);transform:translateY(-1px)}.btn-buy svg{width:16px;height:16px}.product-note{font-size:.75rem;color:var(--fg-light);margin-top:.6rem}
+    #robot{background:var(--bg-alt)}.robot-container{max-width:720px;margin:0 auto;text-align:center}.robot-search-box{background:var(--bg-card);border:1.5px solid var(--border);border-radius:12px;padding:2rem;margin-top:2rem;transition:border-color .2s}.robot-search-box:focus-within{border-color:var(--accent)}.search-row{display:flex;gap:.75rem;margin-bottom:1rem}.search-row select,.search-row input{flex:1;padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:.9rem;background:var(--bg);color:var(--fg);transition:border-color .2s;appearance:auto}.search-row select:focus,.search-row input:focus{outline:none;border-color:var(--accent)}.search-btn{width:100%;padding:.85rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:.9375rem;font-weight:600;cursor:pointer;transition:background .2s}.search-btn:hover{background:var(--accent-hover)}.search-results{margin-top:1.5rem;text-align:left}.result-item{padding:1rem 0;border-bottom:1px solid var(--border-light)}.result-item:last-child{border-bottom:none}.result-item h4{font-size:.95rem;margin-bottom:.25rem}.result-item p{font-size:.825rem;color:var(--fg-muted);margin:0}.result-meta{display:flex;gap:1rem;margin-top:.4rem;font-size:.75rem;color:var(--fg-light)}.result-meta span{display:flex;align-items:center;gap:.25rem}.no-results{padding:2rem;color:var(--fg-muted);font-size:.9rem}
+    .about-content{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}.about-text p{font-size:1rem;color:var(--fg-muted);line-height:1.8;margin-bottom:1rem}.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}.stat-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:10px;padding:1.5rem;text-align:center}.stat-card .num{font-family:var(--serif);font-size:2rem;color:var(--accent);line-height:1}.stat-card .label{font-size:.8rem;color:var(--fg-muted);margin-top:.35rem}
+    .cta-section{background:var(--fg);color:#fff;border-radius:16px;padding:3.5rem;text-align:center;margin:0 auto;max-width:1080px}.cta-section h2{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.75rem}.cta-section p{color:rgba(255,255,255,.7);margin-bottom:2rem;font-size:1rem}.cta-form{display:flex;gap:.75rem;max-width:460px;margin:0 auto}.cta-form input{flex:1;padding:.85rem 1.25rem;border:1.5px solid rgba(255,255,255,.2);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;font-family:var(--sans);font-size:.9rem}.cta-form input::placeholder{color:rgba(255,255,255,.4)}.cta-form input:focus{outline:none;border-color:rgba(255,255,255,.5)}.cta-form button{padding:.85rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:.9rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .2s}.cta-form button:hover{background:var(--accent-hover)}
+    footer{padding:3rem 1.5rem;border-top:1px solid var(--border-light);text-align:center}footer p{font-size:.825rem;color:var(--fg-light)}footer a{color:var(--fg-muted);text-decoration:none}footer a:hover{color:var(--accent)}
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.fade-up.visible{opacity:1;transform:translateY(0)}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+    @media(max-width:768px){.nav-links{display:none}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(250,250,248,.98);backdrop-filter:blur(12px);padding:1.5rem;gap:1.25rem;border-bottom:1px solid var(--border-light)}.hamburger{display:block}.hero{padding:8rem 1.5rem 3rem}.products-grid{grid-template-columns:1fr}.about-content{grid-template-columns:1fr}.search-row{flex-direction:column}.cta-section{padding:2.5rem 1.5rem;border-radius:0}.cta-form{flex-direction:column}section{padding:3.5rem 1.5rem}}
+  </style>
+</head>
+<body>
+  <nav id="navbar"><div class="nav-inner"><a href="#" class="nav-logo">hibe<span>atölyesi</span></a><ul class="nav-links" id="navLinks"><li><a href="#urunler">Ürünler</a></li><li><a href="#robot">Hibe Arama</a></li><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#iletisim">İletişim</a></li></ul><button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menü"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div></nav>
+
+  <header class="hero">
+    <div class="hero-badge fade-up">Rehberler · Şablonlar · Araçlar</div>
+    <h1 class="fade-up delay-1">Hibe ve destek başvurularında işinizi kolaylaştırıyoruz</h1>
+    <p class="fade-up delay-2">KOSGEB destekleri, AB hibeleri, Interreg ve IPA programları için hazır başvuru rehberleri, profesyonel şablonlar ve ücretsiz hibe arama aracı.</p>
+    <div class="hero-cta fade-up delay-3">
+      <a href="#urunler" class="btn btn-primary">Ürünleri İncele <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg></a>
+      <a href="#robot" class="btn btn-secondary">Ücretsiz Hibe Ara <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></a>
+    </div>
+  </header>
+
+  <section id="urunler">
+    <div class="section-inner">
+      <div class="section-label fade-up">Ürünler</div>
+      <h2 class="section-title fade-up">Başvurunuzu güçlendirecek rehber ve şablonlar</h2>
+      <p class="section-desc fade-up">Her bir ürün, yılların saha deneyimiyle hazırlanmış pratik araçlardır. İndirin, doldurun, başvurun.</p>
+      <div class="products-grid">
+
+        <!-- ★ KOSGEB KIT — SATIŞ KARTI ★ -->
+        <div class="product-card featured fade-up">
+          <div class="product-ribbon">Yeni</div>
+          <div class="product-icon green">📋</div>
+          <h3>KOSGEB Destek Başvuru Kiti 2026</h3>
+          <p>Danışmana binlerce lira ödemeden projenizi kendiniz yazın. Gerçek başvuru formlarına dayalı doldurma rehberi, kurul puanlama analizi, jüri taktikleri, bütçe hazırlama ve onay sonrası süreçler.</p>
+          <div class="product-features">
+            <span>📄 50+ Sayfa</span>
+            <span>🎯 2026 Güncel</span>
+            <span>📝 Form Rehberi</span>
+            <span>⚖️ Jüri Taktikleri</span>
+          </div>
+          <div class="product-price">
+            <span class="price-current">249 TL</span>
+            <span class="price-old">349 TL</span>
+            <span class="price-label">Lansman Fiyatı</span>
+          </div>
+          <!--
+            ╔═══════════════════════════════════════════════════╗
+            ║  SHOPIER LİNKİNİ AŞAĞIDAKİ href İÇİNE YAPIŞTIR  ║
+            ╚═══════════════════════════════════════════════════╝
+          -->
+          <a href="https://www.shopier.com/BURAYA-SHOPIER-LINKI" target="_blank" rel="noopener" class="btn-buy">
+            Satın Al
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>
+          </a>
+          <p class="product-note">Ödeme sonrası anında e-posta ile teslim edilir.</p>
+        </div>
+
+        <div class="product-card fade-up delay-1"><div class="product-icon blue">🇪🇺</div><h3>STK'lar İçin AB Hibe Rehberi</h3><p>Sivil toplum kuruluşlarının başvurabileceği AB hibe programları rehberi. Program karşılaştırmaları, başvuru adımları ve proje tasarım şablonları.</p><span class="product-tag tag-soon">Yakında</span></div>
+
+        <div class="product-card fade-up delay-2"><div class="product-icon orange">🌍</div><h3>Interreg &amp; IPA Başvuru Şablonları</h3><p>Interreg ve IPA programları için İngilizce proje özeti, ortaklık mektubu, bütçe şablonu ve değerlendirme kriterleri kontrol listesi.</p><span class="product-tag tag-new">İngilizce</span></div>
+
+        <div class="product-card fade-up delay-3"><div class="product-icon purple">🔍</div><h3>Hibe Arama Robotu</h3><p>Açık hibe ve destek çağrılarını tek bir yerden arayın. KOSGEB, TÜBİTAK, AB, Interreg ve daha fazlası. Tamamen ücretsiz.</p><span class="product-tag tag-free">Ücretsiz</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="robot"><div class="section-inner"><div class="robot-container"><div class="section-label fade-up">Ücretsiz Araç</div><h2 class="section-title fade-up" style="text-align:center">Hibe Arama Robotu</h2><p class="section-desc fade-up" style="text-align:center;margin-left:auto;margin-right:auto">Kurum türünüze ve ilgi alanınıza göre açık hibe ve destek çağrılarını arayın.</p><div class="robot-search-box fade-up"><div class="search-row"><select id="searchType"><option value="">Kurum Türü Seçin</option><option value="kobi">KOBİ / Şirket</option><option value="stk">STK / Dernek / Vakıf</option><option value="belediye">Belediye / Kamu</option><option value="universite">Üniversite / Araştırma</option></select><select id="searchProgram"><option value="">Program Seçin</option><option value="kosgeb">KOSGEB</option><option value="tubitak">TÜBİTAK</option><option value="ab">AB Hibeleri</option><option value="interreg">Interreg</option><option value="ipa">IPA</option><option value="kalkinma">Kalkınma Ajansı</option><option value="diger">Diğer</option></select></div><div class="search-row"><input type="text" id="searchKeyword" placeholder="Anahtar kelime (ör: dijitalleşme, yeşil dönüşüm, kültür)"></div><button class="search-btn" onclick="searchGrants()">Hibe Ara</button><div class="search-results" id="searchResults"></div></div><p class="fade-up" style="font-size:.8rem;color:var(--fg-light);margin-top:1.25rem">Veriler düzenli olarak güncellenmektedir. Son güncelleme: Mart 2026</p></div></div></section>
+
+  <section id="hakkimizda"><div class="section-inner"><div class="section-label fade-up">Hakkımızda</div><h2 class="section-title fade-up">Sahada edinilmiş bilgiyi, erişilebilir araçlara dönüştürüyoruz</h2><div class="about-content"><div class="about-text fade-up"><p>Hibe Atölyesi, hibe ve destek programlarına başvurmak isteyen KOBİ'ler, sivil toplum kuruluşları ve kamu kurumlarına yönelik pratik araçlar sunan bağımsız bir platformdur.</p><p>Rehberlerimiz ve şablonlarımız, AB fonları, KOSGEB destekleri ve uluslararası işbirliği programlarında (Interreg, IPA) yılların saha deneyimiyle oluşturulmuştur. Amacımız, profesyonel danışmanlık hizmetine erişimi olmayan kuruluşların da güçlü başvurular hazırlayabilmesini sağlamaktır.</p><p>Tüm içeriklerimiz uygulayıcı perspektifiyle hazırlanır: teorik değil, doğrudan kullanılabilir.</p></div><div class="about-stats fade-up delay-1"><div class="stat-card"><div class="num">10+</div><div class="label">Yıl saha deneyimi</div></div><div class="stat-card"><div class="num">4</div><div class="label">Program alanı</div></div><div class="stat-card"><div class="num">TR/EN</div><div class="label">İki dilde içerik</div></div><div class="stat-card"><div class="num">7/24</div><div class="label">Anında erişim</div></div></div></div></div></section>
+
+  <section id="iletisim" style="padding-bottom:5rem"><div class="cta-section fade-up"><h2>Yeni rehberlerden ve açık çağrılardan haberdar olun</h2><p>E-posta listemize katılın. Spam yok, sadece işe yarar bilgi.</p><div class="cta-form"><input type="email" placeholder="E-posta adresiniz" id="emailInput"><button onclick="handleSubscribe()">Kaydol</button></div><p id="subscribeMsg" style="margin-top:1rem;font-size:.85rem;display:none"></p></div></section>
+
+  <footer><p>&copy; 2026 Hibe Atölyesi. Tüm hakları saklıdır.</p><p style="margin-top:.5rem"><a href="mailto:info@hibeatolyesi.com">info@hibeatolyesi.com</a></p></footer>
+
+  <script>
+    window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20)});
+    const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.fade-up').forEach(e=>observer.observe(e));
+    const grants=[{title:"KOSGEB KOBİ Teknolojik Ürün Yatırım Destek Programı",program:"kosgeb",types:["kobi"],desc:"Teknolojik ürün yatırımlarına yönelik geri ödemesiz ve geri ödemeli destek.",deadline:"Sürekli açık",amount:"6.000.000 TL'ye kadar",keywords:["teknoloji","üretim","yatırım","dijitalleşme"]},{title:"KOSGEB Girişimcilik Destek Programı",program:"kosgeb",types:["kobi"],desc:"Yeni kurulan işletmelere hibe ve kredi faiz desteği.",deadline:"Sürekli açık",amount:"400.000 TL'ye kadar",keywords:["girişimcilik","startup","yeni işletme"]},{title:"KOSGEB KOBİ Gelişim Destek Programı",program:"kosgeb",types:["kobi"],desc:"KOBİ'lerin yurtiçi ve yurtdışı fuar katılımı, nitelikli eleman istihdamı, eğitim ve danışmanlık destekleri.",deadline:"Sürekli açık",amount:"Destek türüne göre değişir",keywords:["fuar","istihdam","eğitim","danışmanlık","ihracat"]},{title:"TÜBİTAK 1507 KOBİ Ar-Ge Başlangıç Destek Programı",program:"tubitak",types:["kobi"],desc:"KOBİ'lerin Ar-Ge projelerine %75'e varan hibe desteği.",deadline:"Yılda birkaç dönem",amount:"2.400.000 TL'ye kadar",keywords:["ar-ge","inovasyon","teknoloji","yazılım"]},{title:"TÜBİTAK 1512 Girişimcilik Aşamalı Destek Programı (BiGG)",program:"tubitak",types:["kobi"],desc:"Teknoloji tabanlı girişimcilere aşamalı hibe desteği.",deadline:"Dönemsel",amount:"600.000 TL + 1.500.000 TL",keywords:["girişimcilik","teknoloji","startup","inovasyon"]},{title:"Interreg NEXT MED – 3. Çağrı (Beklenen)",program:"interreg",types:["belediye","stk","universite"],desc:"Akdeniz havzasında yeşil dönüşüm, dijitalleşme ve sürdürülebilir turizm projeleri.",deadline:"2026 2. yarı (beklenen)",amount:"Proje başına 1-3 M€",keywords:["akdeniz","yeşil","dijital","turizm","sürdürülebilirlik","kültür"]},{title:"Interreg Euro-MED Yönetişim Projeleri",program:"interreg",types:["belediye","stk","universite"],desc:"Euro-Akdeniz bölgesinde akıllı büyüme ve çevre koruma odaklı yönetişim projeleri.",deadline:"Dönemsel",amount:"Değişken",keywords:["yönetişim","akıllı şehir","çevre","inovasyon"]},{title:"IPA III – Sivil Toplum Tesisi",program:"ipa",types:["stk"],desc:"Türkiye'deki STK'ların AB standartlarına uyum ve kapasite geliştirme projeleri.",deadline:"Dönemsel",amount:"50.000 – 300.000 €",keywords:["sivil toplum","kapasite","demokrasi","insan hakları"]},{title:"IPA III – Çevre ve İklim Değişikliği",program:"ipa",types:["belediye","stk","kobi"],desc:"Çevre koruma, iklim değişikliğiyle mücadele ve yeşil dönüşüm projeleri.",deadline:"Dönemsel",amount:"Değişken",keywords:["çevre","iklim","yeşil dönüşüm","sürdürülebilirlik"]},{title:"AB Sivil Düşün Programı",program:"ab",types:["stk"],desc:"Türkiye'deki STK'ların kapasitelerini güçlendirmek için hibe ve teknik destek.",deadline:"Dönemsel çağrılar",amount:"25.000 – 150.000 €",keywords:["sivil toplum","kapasite","savunuculuk","hak"]},{title:"Kalkınma Ajansları Mali Destek Programları",program:"kalkinma",types:["kobi","stk","belediye"],desc:"İl ve bölge düzeyinde ekonomik ve sosyal kalkınma projeleri.",deadline:"Yıl boyunca (ajansa göre)",amount:"100.000 – 2.000.000 TL",keywords:["kalkınma","bölgesel","sosyal","ekonomik","turizm","tarım"]},{title:"AB Erasmus+ KA2 Stratejik Ortaklıklar",program:"ab",types:["stk","universite","belediye"],desc:"Eğitim, gençlik ve spor alanlarında uluslararası ortaklık projeleri.",deadline:"Yıllık çağrılar (genellikle Mart)",amount:"120.000 – 400.000 €",keywords:["eğitim","gençlik","spor","kültür","değişim"]}];
+    function searchGrants(){const t=document.getElementById('searchType').value,p=document.getElementById('searchProgram').value,k=document.getElementById('searchKeyword').value.toLowerCase().trim(),r=document.getElementById('searchResults');let f=grants;if(t)f=f.filter(g=>g.types.includes(t));if(p)f=f.filter(g=>g.program===p);if(k)f=f.filter(g=>g.title.toLowerCase().includes(k)||g.desc.toLowerCase().includes(k)||g.keywords.some(w=>w.includes(k)));if(!f.length){r.innerHTML='<div class="no-results">Arama kriterlerinize uygun sonuç bulunamadı.</div>';return}r.innerHTML=f.map(g=>`<div class="result-item"><h4>${g.title}</h4><p>${g.desc}</p><div class="result-meta"><span>📅 ${g.deadline}</span><span>💰 ${g.amount}</span></div></div>`).join('')}
+    function handleSubscribe(){const e=document.getElementById('emailInput').value,m=document.getElementById('subscribeMsg');if(e&&e.includes('@')){m.textContent='✓ Kaydınız alınmıştır. Teşekkürler!';m.style.display='block';m.style.color='rgba(255,255,255,.8)';document.getElementById('emailInput').value=''}else{m.textContent='Lütfen geçerli bir e-posta adresi girin.';m.style.display='block';m.style.color='#ff8a80'}}
+    document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'))});
   </script>
 </body>
 </html>
